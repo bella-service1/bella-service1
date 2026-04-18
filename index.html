@@ -164,6 +164,7 @@
       border-bottom: 1px solid #eee4dc;
       text-align: center;
       font-size: 12px;
+      vertical-align: middle;
     }
 
     td input {
@@ -174,11 +175,6 @@
       border-radius: 8px;
       text-align: center;
       font-size: 12px;
-    }
-
-    .line-total {
-      font-weight: bold;
-      color: #5b3b2e;
     }
 
     .actions,
@@ -208,13 +204,6 @@
     .btn-secondary {
       background: #efe5de;
       color: #5b3b2e;
-    }
-
-    .btn-danger {
-      background: #b94b4b;
-      color: #fff;
-      padding: 8px 10px;
-      border-radius: 8px;
     }
 
     .summary-box {
@@ -285,6 +274,11 @@
       text-align: center;
       font-size: 11px;
       color: #8b776a;
+    }
+
+    .print-hide-row,
+    .print-hide-field {
+      display: none !important;
     }
 
     @media (max-width: 900px) {
@@ -523,20 +517,18 @@
         <table id="itemsTable">
           <thead>
             <tr>
-              <th style="width: 34%;">الصنف / الخدمة</th>
-              <th style="width: 16%;">الكمية</th>
-              <th style="width: 16%;">السعر</th>
-              <th style="width: 18%;">الإجمالي</th>
-              <th style="width: 16%;">حذف</th>
+              <th style="width: 38%;">الصنف / الخدمة</th>
+              <th style="width: 18%;">الكمية</th>
+              <th style="width: 18%;">السعر</th>
+              <th style="width: 26%;">ملاحظات</th>
             </tr>
           </thead>
           <tbody id="tableBody">
             <tr>
               <td><input type="text" class="item-name" placeholder="اكتب الصنف أو الخدمة" /></td>
-              <td><input type="number" class="qty" min="0" step="1" value="1" /></td>
-              <td><input type="number" class="price" min="0" step="0.01" value="0" /></td>
-              <td class="line-total">0.00</td>
-              <td><button type="button" class="btn-danger" onclick="removeRow(this)">حذف</button></td>
+              <td><input type="number" class="qty" min="0" step="1" value="" /></td>
+              <td><input type="number" class="price" min="0" step="0.01" value="" /></td>
+              <td><input type="text" class="item-note" placeholder="ملاحظات" /></td>
             </tr>
           </tbody>
         </table>
@@ -557,7 +549,7 @@
 
       <div class="notes">
         <div class="field">
-          <label for="notes">ملاحظات</label>
+          <label for="notes">ملاحظات عامة</label>
           <textarea id="notes" placeholder="أضف أي ملاحظات إضافية هنا..."></textarea>
         </div>
       </div>
@@ -578,7 +570,7 @@
       </div>
 
       <div class="bottom-actions">
-        <button type="button" class="btn-primary" onclick="window.print()">طباعة النموذج</button>
+        <button type="button" class="btn-primary" onclick="printForm()">طباعة النموذج</button>
         <button type="button" class="btn-secondary" onclick="saveAsPDF()">حفظ PDF</button>
       </div>
 
@@ -596,14 +588,11 @@
       rows.forEach(row => {
         const qtyInput = row.querySelector(".qty");
         const priceInput = row.querySelector(".price");
-        const lineTotalCell = row.querySelector(".line-total");
 
         const qty = parseFloat(qtyInput.value) || 0;
         const price = parseFloat(priceInput.value) || 0;
-        const total = qty * price;
 
-        lineTotalCell.textContent = total.toFixed(2);
-        grandTotal += total;
+        grandTotal += qty * price;
       });
 
       document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
@@ -615,25 +604,14 @@
 
       row.innerHTML = `
         <td><input type="text" class="item-name" placeholder="اكتب الصنف أو الخدمة" /></td>
-        <td><input type="number" class="qty" min="0" step="1" value="1" /></td>
-        <td><input type="number" class="price" min="0" step="0.01" value="0" /></td>
-        <td class="line-total">0.00</td>
-        <td><button type="button" class="btn-danger" onclick="removeRow(this)">حذف</button></td>
+        <td><input type="number" class="qty" min="0" step="1" value="" /></td>
+        <td><input type="number" class="price" min="0" step="0.01" value="" /></td>
+        <td><input type="text" class="item-note" placeholder="ملاحظات" /></td>
       `;
 
       tbody.appendChild(row);
       attachEvents(row);
       calculateTotals();
-    }
-
-    function removeRow(button) {
-      const rows = document.querySelectorAll("#tableBody tr");
-      if (rows.length > 1) {
-        button.closest("tr").remove();
-        calculateTotals();
-      } else {
-        alert("لا يمكن حذف آخر سطر.");
-      }
     }
 
     function attachEvents(scope = document) {
@@ -651,8 +629,48 @@
       });
     }
 
-    function saveAsPDF() {
+    function beforePrintCleanup() {
+      const rows = document.querySelectorAll("#tableBody tr");
+
+      rows.forEach(row => {
+        const item = row.querySelector(".item-name")?.value.trim() || "";
+        const qty = row.querySelector(".qty")?.value.trim() || "";
+        const price = row.querySelector(".price")?.value.trim() || "";
+        const note = row.querySelector(".item-note")?.value.trim() || "";
+
+        const isEmpty = !item && !qty && !price && !note;
+
+        if (isEmpty) {
+          row.classList.add("print-hide-row");
+        } else {
+          row.classList.remove("print-hide-row");
+        }
+      });
+
+      document.querySelectorAll(".field").forEach(field => {
+        const input = field.querySelector("input, select, textarea");
+        if (!input) return;
+
+        const value = input.value.trim();
+        if (!value) {
+          field.classList.add("print-hide-field");
+        } else {
+          field.classList.remove("print-hide-field");
+        }
+      });
+    }
+
+    function printForm() {
+      beforePrintCleanup();
       window.print();
+      setTimeout(() => {
+        document.querySelectorAll(".print-hide-row").forEach(el => el.classList.remove("print-hide-row"));
+        document.querySelectorAll(".print-hide-field").forEach(el => el.classList.remove("print-hide-field"));
+      }, 500);
+    }
+
+    function saveAsPDF() {
+      printForm();
     }
 
     document.getElementById("releaseDate").valueAsDate = new Date();
