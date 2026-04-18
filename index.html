@@ -18,17 +18,17 @@
     }
 
     body {
-      background: #f5f1ec;
+      background: #f3efeb;
       color: #2f2a26;
-      padding: 24px;
+      padding: 14px;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 980px;
       margin: 0 auto;
       background: #ffffff;
-      border-radius: 28px;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
       overflow: hidden;
       border: 1px solid #eadfd6;
     }
@@ -36,28 +36,28 @@
     .header {
       background: linear-gradient(135deg, #4d3328 0%, #7a5a4b 100%);
       color: white;
-      padding: 22px 28px;
+      padding: 12px 18px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .logo {
-      width: 82px;
-      height: 82px;
-      border-radius: 18px;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
       background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       flex-shrink: 0;
-      padding: 8px;
+      padding: 6px;
       color: #6f4c3d;
-      font-size: 34px;
+      font-size: 28px;
       font-weight: bold;
     }
 
@@ -69,49 +69,53 @@
     }
 
     .logo-text {
-      font-size: 30px;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+      line-height: 1.2;
     }
 
     .sub-title {
-      font-size: 14px;
-      opacity: 0.9;
+      font-size: 12px;
+      opacity: 0.95;
     }
 
     .content {
-      padding: 26px;
+      padding: 14px;
       background: #fff;
     }
 
     .section-title {
-      font-size: 22px;
+      font-size: 17px;
       font-weight: bold;
       color: #5b3b2e;
-      margin: 8px 0 18px;
+      margin: 4px 0 10px;
+      background: #efe5de;
+      padding: 8px 12px;
+      border-radius: 10px;
     }
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-bottom: 26px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
     }
 
     .field {
       background: #faf7f4;
       border: 1px solid #e7d9cf;
-      border-radius: 16px;
-      padding: 12px;
+      border-radius: 12px;
+      padding: 8px;
       min-width: 0;
     }
 
     .field label {
       display: block;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: bold;
       color: #7b5b4e;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .field input,
@@ -120,9 +124,9 @@
       width: 100%;
       min-width: 0;
       border: 1px solid #d9c9bc;
-      border-radius: 12px;
-      padding: 11px 12px;
-      font-size: 14px;
+      border-radius: 9px;
+      padding: 8px 9px;
+      font-size: 12px;
       background: white;
       color: #2f2a26;
       outline: none;
@@ -132,14 +136,14 @@
     .field select:focus,
     .field textarea:focus {
       border-color: #8b6b5c;
-      box-shadow: 0 0 0 3px rgba(139, 107, 92, 0.12);
+      box-shadow: 0 0 0 2px rgba(139, 107, 92, 0.12);
     }
 
     .table-wrap {
       overflow-x: auto;
       border: 1px solid #eadfd6;
-      border-radius: 18px;
-      margin-top: 10px;
+      border-radius: 12px;
+      margin-top: 6px;
       background: #fff;
       width: 100%;
     }
@@ -147,7 +151,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 780px;
+      min-width: 640px;
     }
 
     thead {
@@ -156,18 +160,20 @@
 
     th,
     td {
-      padding: 14px 12px;
+      padding: 8px 6px;
       border-bottom: 1px solid #eee4dc;
       text-align: center;
+      font-size: 12px;
     }
 
     td input {
       width: 100%;
-      min-width: 70px;
-      padding: 10px 12px;
+      min-width: 60px;
+      padding: 7px 8px;
       border: 1px solid #dccdc1;
-      border-radius: 10px;
+      border-radius: 8px;
       text-align: center;
+      font-size: 12px;
     }
 
     .line-total {
@@ -178,17 +184,17 @@
     .actions,
     .bottom-actions {
       display: flex;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 10px;
       justify-content: center;
     }
 
     button {
       border: none;
-      border-radius: 14px;
-      padding: 12px 18px;
-      font-size: 14px;
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 12px;
       font-weight: bold;
       cursor: pointer;
       transition: 0.2s ease;
@@ -199,10 +205,6 @@
       color: #fff;
     }
 
-    .btn-primary:hover {
-      opacity: 0.95;
-    }
-
     .btn-secondary {
       background: #efe5de;
       color: #5b3b2e;
@@ -211,262 +213,216 @@
     .btn-danger {
       background: #b94b4b;
       color: #fff;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
     }
 
     .summary-box {
-      margin-top: 24px;
+      margin-top: 10px;
       display: flex;
       justify-content: flex-start;
     }
 
     .summary-card {
-      min-width: 280px;
+      min-width: 220px;
       background: #faf7f4;
       border: 1px solid #eadfd6;
-      border-radius: 18px;
-      padding: 18px;
+      border-radius: 12px;
+      padding: 12px;
     }
 
     .summary-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 18px;
+      font-size: 15px;
       font-weight: bold;
       color: #5b3b2e;
-      gap: 16px;
+      gap: 10px;
     }
 
     .notes {
-      margin-top: 24px;
+      margin-top: 12px;
+    }
+
+    .notes .field textarea {
+      min-height: 80px;
+      resize: vertical;
     }
 
     .signatures-section {
-      margin-top: 30px;
+      margin-top: 14px;
     }
 
-    .signatures-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .signature-card {
-      background: #faf7f4;
-      border: 1px solid #eadfd6;
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .signature-label {
-      display: block;
-      font-size: 14px;
-      font-weight: bold;
-      color: #7b5b4e;
-      margin-bottom: 10px;
-    }
-
-    .signature-pad {
-      width: 100%;
-      height: 180px;
-      background: #fff;
-      border: 2px dashed #d8c7bb;
-      border-radius: 14px;
-      touch-action: none;
-      display: block;
-    }
-
-    .signature-actions {
-      margin-top: 10px;
+    .signatures-print {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sign-box {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+    }
+
+    .sign-line {
+      border-bottom: 1.5px solid #8f7b6f;
+      height: 28px;
+      margin-bottom: 5px;
+    }
+
+    .sign-label {
+      font-size: 12px;
+      color: #5b3b2e;
+      font-weight: bold;
     }
 
     .footer-note {
-      margin-top: 18px;
+      margin-top: 12px;
       text-align: center;
-      font-size: 13px;
+      font-size: 11px;
       color: #8b776a;
     }
 
     @media (max-width: 900px) {
       .form-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .signatures-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
-@media (max-width: 640px) {
-  body {
-    padding: 0;
-    background: #fff;
-  }
+    @media (max-width: 640px) {
+      body {
+        padding: 6px;
+        background: #f3efeb;
+      }
 
-  .container {
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
-  }
+      .container {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 12px;
+        box-shadow: none;
+        border: none;
+      }
 
-  .header {
-    padding: 12px 14px;
-  }
+      .header {
+        padding: 10px 12px;
+      }
 
-  .brand {
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
+      .brand {
+        gap: 10px;
+      }
 
-  .logo {
-    width: 54px;
-    height: 54px;
-    padding: 5px;
-    border-radius: 12px;
-  }
+      .logo {
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+        padding: 5px;
+      }
 
-  .logo-text {
-    font-size: 18px;
-    line-height: 1.2;
-    margin-bottom: 2px;
-  }
+      .logo-text {
+        font-size: 17px;
+      }
 
-  .sub-title {
-    font-size: 11px;
-  }
+      .sub-title {
+        font-size: 10px;
+      }
 
-  .content {
-    padding: 10px;
-  }
+      .content {
+        padding: 10px;
+      }
 
-  .section-title {
-    font-size: 16px;
-    margin: 6px 0 10px;
-  }
+      .section-title {
+        font-size: 15px;
+        margin: 4px 0 8px;
+        padding: 7px 10px;
+      }
 
-  .form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    margin-bottom: 14px;
-  }
+      .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        margin-bottom: 10px;
+      }
 
-  .field {
-    padding: 8px;
-    border-radius: 12px;
-  }
+      .field {
+        padding: 6px;
+        border-radius: 10px;
+      }
 
-  .field label {
-    font-size: 11px;
-    margin-bottom: 5px;
-  }
+      .field label {
+        font-size: 10px;
+        margin-bottom: 3px;
+      }
 
-  .field input,
-  .field select,
-  .field textarea {
-    font-size: 13px;
-    padding: 8px 9px;
-    border-radius: 10px;
-  }
+      .field input,
+      .field select,
+      .field textarea {
+        font-size: 12px;
+        padding: 7px 8px;
+        border-radius: 8px;
+      }
 
-  .table-wrap {
-    margin-top: 6px;
-    border-radius: 12px;
-  }
+      table {
+        min-width: 580px;
+      }
 
-  table {
-    min-width: 620px;
-  }
+      th,
+      td {
+        padding: 6px 5px;
+        font-size: 11px;
+      }
 
-  th,
-  td {
-    padding: 8px 6px;
-    font-size: 12px;
-  }
+      td input {
+        font-size: 11px;
+        padding: 6px;
+      }
 
-  td input {
-    padding: 7px 8px;
-    font-size: 12px;
-  }
+      .actions,
+      .bottom-actions {
+        flex-direction: row;
+        gap: 6px;
+      }
 
-  .actions,
-  .bottom-actions {
-    flex-direction: row;
-    gap: 8px;
-    justify-content: center;
-  }
+      .actions button,
+      .bottom-actions button {
+        flex: 1 1 0;
+        width: auto;
+        font-size: 12px;
+        padding: 9px 10px;
+      }
 
-  .actions button,
-  .bottom-actions button {
-    width: auto;
-    flex: 1 1 0;
-    font-size: 13px;
-    padding: 10px 12px;
-  }
+      .summary-card {
+        width: 100%;
+        min-width: 0;
+        padding: 10px;
+      }
 
-  .summary-box {
-    margin-top: 14px;
-  }
+      .summary-row {
+        font-size: 14px;
+      }
 
-  .summary-card {
-    width: 100%;
-    min-width: 0;
-    padding: 12px;
-    border-radius: 14px;
-  }
+      .signatures-print {
+        gap: 14px;
+      }
 
-  .summary-row {
-    font-size: 15px;
-  }
+      .sign-box {
+        min-width: 130px;
+      }
 
-  .notes {
-    margin-top: 14px;
-  }
+      .sign-line {
+        height: 22px;
+      }
 
-  .signatures-section {
-    margin-top: 18px;
-  }
+      .sign-label {
+        font-size: 11px;
+      }
 
-  .signatures-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .signature-card {
-    padding: 10px;
-    border-radius: 14px;
-  }
-
-  .signature-label {
-    font-size: 12px;
-    margin-bottom: 8px;
-  }
-
-  .signature-pad {
-    height: 110px;
-  }
-
-  .signature-actions {
-    flex-direction: row;
-  }
-
-  .signature-actions button {
-    width: 100%;
-    font-size: 12px;
-    padding: 9px 10px;
-  }
-
-  .footer-note {
-    font-size: 11px;
-    margin-top: 12px;
-  }
-}
+      .footer-note {
+        font-size: 10px;
+      }
+    }
 
     @media print {
       body {
@@ -483,13 +439,17 @@
 
       .actions,
       .bottom-actions,
-      .signature-actions {
+      .footer-note {
         display: none !important;
       }
 
       .header {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+      }
+
+      .sign-line {
+        border-bottom: 1px solid #666;
       }
     }
   </style>
@@ -604,22 +564,15 @@
 
       <div class="signatures-section">
         <div class="section-title">التوقيعات</div>
-
-        <div class="signatures-grid">
-          <div class="signature-card">
-            <label class="signature-label">توقيع المحرر</label>
-            <canvas id="editorSignature" class="signature-pad"></canvas>
-            <div class="signature-actions">
-              <button type="button" class="btn-secondary" onclick="clearSignature('editorSignature')">مسح التوقيع</button>
-            </div>
+        <div class="signatures-print">
+          <div class="sign-box">
+            <div class="sign-line"></div>
+            <div class="sign-label">توقيع المحرر</div>
           </div>
 
-          <div class="signature-card">
-            <label class="signature-label">توقيع المستلم</label>
-            <canvas id="receiverSignature" class="signature-pad"></canvas>
-            <div class="signature-actions">
-              <button type="button" class="btn-secondary" onclick="clearSignature('receiverSignature')">مسح التوقيع</button>
-            </div>
+          <div class="sign-box">
+            <div class="sign-line"></div>
+            <div class="sign-label">توقيع المستلم</div>
           </div>
         </div>
       </div>
@@ -698,86 +651,6 @@
       });
     }
 
-    const signaturePads = {};
-
-    function setupSignaturePad(canvasId) {
-      const canvas = document.getElementById(canvasId);
-      const ctx = canvas.getContext("2d");
-
-      function resizeCanvas() {
-        const ratio = Math.max(window.devicePixelRatio || 1, 1);
-        const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width * ratio;
-        canvas.height = rect.height * ratio;
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.scale(ratio, ratio);
-        ctx.lineWidth = 2;
-        ctx.lineCap = "round";
-        ctx.strokeStyle = "#5b3b2e";
-      }
-
-      let drawing = false;
-      let lastX = 0;
-      let lastY = 0;
-
-      function getPosition(e) {
-        const rect = canvas.getBoundingClientRect();
-        if (e.touches && e.touches.length > 0) {
-          return {
-            x: e.touches[0].clientX - rect.left,
-            y: e.touches[0].clientY - rect.top
-          };
-        }
-        return {
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        };
-      }
-
-      function startDraw(e) {
-        drawing = true;
-        const pos = getPosition(e);
-        lastX = pos.x;
-        lastY = pos.y;
-      }
-
-      function draw(e) {
-        if (!drawing) return;
-        e.preventDefault();
-        const pos = getPosition(e);
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.stroke();
-        lastX = pos.x;
-        lastY = pos.y;
-      }
-
-      function endDraw() {
-        drawing = false;
-      }
-
-      canvas.addEventListener("mousedown", startDraw);
-      canvas.addEventListener("mousemove", draw);
-      canvas.addEventListener("mouseup", endDraw);
-      canvas.addEventListener("mouseleave", endDraw);
-
-      canvas.addEventListener("touchstart", startDraw, { passive: false });
-      canvas.addEventListener("touchmove", draw, { passive: false });
-      canvas.addEventListener("touchend", endDraw);
-
-      resizeCanvas();
-      window.addEventListener("resize", resizeCanvas);
-
-      signaturePads[canvasId] = { canvas, ctx, resizeCanvas };
-    }
-
-    function clearSignature(canvasId) {
-      const pad = signaturePads[canvasId];
-      if (!pad) return;
-      pad.ctx.clearRect(0, 0, pad.canvas.width, pad.canvas.height);
-    }
-
     function saveAsPDF() {
       window.print();
     }
@@ -786,8 +659,6 @@
 
     attachEvents();
     calculateTotals();
-    setupSignaturePad("editorSignature");
-    setupSignaturePad("receiverSignature");
   </script>
 </body>
 </html>
