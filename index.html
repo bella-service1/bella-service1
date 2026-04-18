@@ -1,111 +1,512 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>نموذج بيانات الحفلة</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بيلا لخدمات الضيافة</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Tahoma", "Arial", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #f8f6f3 0%, #f2ece6 100%);
+      color: #2f2a26;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      border: 1px solid #eee4dc;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #5b3b2e 0%, #8b6b5c 100%);
+      color: white;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 78px;
+      height: 78px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-title {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-top: 6px;
+    }
+
+    .invoice-badge {
+      background: rgba(255,255,255,0.12);
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      min-width: 180px;
+      text-align: center;
+    }
+
+    .invoice-badge h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .content {
+      padding: 28px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #5b3b2e;
+      margin-bottom: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .field {
+      background: #fcfaf8;
+      border: 1px solid #eadfd6;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      color: #7b5b4e;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #dccdc1;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      background: #fff;
+      color: #2f2a26;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: #8b6b5c;
+      box-shadow: 0 0 0 3px rgba(139, 107, 92, 0.12);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid #eadfd6;
+      border-radius: 18px;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+      background: white;
+    }
+
+    thead {
+      background: #f5ede7;
+    }
+
+    th, td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #eee4dc;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      color: #5b3b2e;
+      font-size: 14px;
+    }
+
+    td input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #dccdc1;
+      border-radius: 10px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .line-total {
+      font-weight: bold;
+      color: #5b3b2e;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #6f4c3d;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5c3f33;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #efe5de;
+      color: #5b3b2e;
+    }
+
+    .btn-secondary:hover {
+      background: #e6d8ce;
+      transform: translateY(-1px);
+    }
+
+    .btn-danger {
+      background: #b94b4b;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+
+    .btn-danger:hover {
+      background: #9e3e3e;
+    }
+
+    .summary-box {
+      margin-top: 24px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .summary-card {
+      min-width: 280px;
+      background: linear-gradient(135deg, #f7f0ea 0%, #fff 100%);
+      border: 1px solid #eadfd6;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #5b3b2e;
+    }
+
+    .notes {
+      margin-top: 24px;
+    }
+
+    .notes textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      color: #8b776a;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .container {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+      }
+
+      .actions {
+        display: none !important;
+      }
+
+      .header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .btn-danger {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .brand {
+        flex-direction: column;
+      }
+
+      .invoice-badge {
+        width: 100%;
+      }
+
+      .content {
+        padding: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">
+          <!-- ضع رابط اللوقو هنا -->
+          <img src="logo.png" alt="Bella Logo" onerror="this.style.display='none'; this.parentNode.innerHTML='B'; this.parentNode.style.fontSize='36px'; this.parentNode.style.fontWeight='bold'; this.parentNode.style.color='white';">
+        </div>
+        <div>
+          <div class="logo-text">بيلا لخدمات الضيافة</div>
+          <div class="sub-title">نموذج تحرير طلب / عرض خدمات</div>
+        </div>
+      </div>
 
-<div class="container">
+      <div class="invoice-badge">
+        <h2>نموذج الخدمة</h2>
+        <div>جاهز للطباعة والتعديل</div>
+      </div>
+    </div>
 
-<h2>نموذج بيانات الحفلة</h2>
+    <div class="content">
+      <div class="section-title">البيانات الأساسية</div>
 
-<!-- يوم وتاريخ التحرير + القسم + نوع الحفلة -->
-<div class="row">
-  <label>يوم التحرير</label>
-  <span id="dayName" class="span-box"></span>
+      <div class="form-grid">
+        <div class="field">
+          <label for="editorName">اسم المحرر</label>
+          <input type="text" id="editorName" placeholder="اكتب اسم المحرر" />
+        </div>
 
-  <label>تاريخ التحرير</label>
-  <span id="todayDate" class="span-box"></span>
+        <div class="field">
+          <label for="phone">رقم الجوال</label>
+          <input type="tel" id="phone" placeholder="05xxxxxxxx" />
+        </div>
 
-  <label>القسم</label>
-  <select>
-    <option>زاهية</option>
-    <option>هام</option>
-  </select>
+        <div class="field">
+          <label for="releaseDate">تاريخ التحرير</label>
+          <input type="date" id="releaseDate" />
+        </div>
 
-  <label>نوع الحفلة</label>
-  <select>
-    <option>رجال</option>
-    <option>نساء</option>
-  </select>
-</div>
+        <div class="field">
+          <label for="department">القسم</label>
+          <input type="text" id="department" placeholder="مثال: التشغيل" />
+        </div>
 
-<!-- يوم وتاريخ الحفلة -->
-<div class="row">
-  <label>يوم الحفلة</label>
-  <select>
-    <option>الأحد</option>
-    <option>الاثنين</option>
-    <option>الثلاثاء</option>
-    <option>الأربعاء</option>
-    <option>الخميس</option>
-    <option>الجمعة</option>
-    <option>السبت</option>
-  </select>
+        <div class="field">
+          <label for="eventType">نوع الحفلة</label>
+          <input type="text" id="eventType" placeholder="مثال: زواج / تخرج / استقبال" />
+        </div>
 
-  <label>تاريخ الحفلة</label>
-  <input type="date">
-</div>
+        <div class="field">
+          <label for="eventDay">يوم الحفلة</label>
+          <select id="eventDay">
+            <option value="">اختر اليوم</option>
+            <option>الأحد</option>
+            <option>الاثنين</option>
+            <option>الثلاثاء</option>
+            <option>الأربعاء</option>
+            <option>الخميس</option>
+            <option>الجمعة</option>
+            <option>السبت</option>
+          </select>
+        </div>
 
-<!-- اسم العميل -->
-<div class="row">
-  <label>اسم العميل</label>
-  <input type="text">
+        <div class="field">
+          <label for="eventDate">تاريخ الحفلة</label>
+          <input type="date" id="eventDate" />
+        </div>
+      </div>
 
-  <label>رقم الجوال</label>
-  <input type="tel">
-</div>
+      <div class="section-title">تفاصيل الطلب</div>
 
+      <div class="table-wrap">
+        <table id="itemsTable">
+          <thead>
+            <tr>
+              <th style="width: 34%;">الصنف / الخدمة</th>
+              <th style="width: 16%;">الكمية</th>
+              <th style="width: 16%;">السعر</th>
+              <th style="width: 18%;">الإجمالي</th>
+              <th style="width: 16%;">حذف</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td><input type="text" class="item-name" placeholder="اكتب الصنف أو الخدمة" /></td>
+              <td><input type="number" class="qty" min="0" step="1" value="1" /></td>
+              <td><input type="number" class="price" min="0" step="0.01" value="0" /></td>
+              <td class="line-total">0.00</td>
+              <td><button type="button" class="btn-danger" onclick="removeRow(this)">حذف</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+      <div class="actions">
+        <button type="button" class="btn-primary" onclick="addRow()">إضافة سطر</button>
+        <button type="button" class="btn-secondary" onclick="window.print()">طباعة</button>
+      </div>
 
-<!-- عدد الموظفين -->
-<h3>عدد الموظفين للحفلة</h3>
-<table id="staffTable">
-  <tr>
-    <th>الصنف</th>
-    <th>العدد</th>
-    <th>ملاحظات</th>
-  </tr>
-</table>
+      <div class="summary-box">
+        <div class="summary-card">
+          <div class="summary-row">
+            <span>المجموع النهائي</span>
+            <span id="grandTotal">0.00</span>
+          </div>
+        </div>
+      </div>
 
+      <div class="notes">
+        <div class="field">
+          <label for="notes">ملاحظات</label>
+          <textarea id="notes" placeholder="أضف أي ملاحظات إضافية هنا..."></textarea>
+        </div>
+      </div>
 
-<!-- الخدمات داخل -->
-<h3>الخدمات داخل الباقة</h3>
-<table id="insideTable">
-  <tr>
-    <th>الصنف</th>
-    <th>العدد</th>
-    <th>ملاحظات</th>
-  </tr>
-</table>
+      <div class="footer-note">
+        تم إعداد هذا النموذج للاستخدام الداخلي والطباعة المباشرة
+      </div>
+    </div>
+  </div>
 
+  <script>
+    function calculateTotals() {
+      const rows = document.querySelectorAll("#tableBody tr");
+      let grandTotal = 0;
 
-<!-- الخدمات خارج -->
-<h3>الخدمات خارج الباقة</h3>
-<table id="outsideTable">
-  <tr>
-    <th>الصنف</th>
-    <th>العدد</th>
-    <th>ملاحظات</th>
-  </tr>
-</table>
+      rows.forEach(row => {
+        const qtyInput = row.querySelector(".qty");
+        const priceInput = row.querySelector(".price");
+        const lineTotalCell = row.querySelector(".line-total");
 
+        const qty = parseFloat(qtyInput.value) || 0;
+        const price = parseFloat(priceInput.value) || 0;
+        const total = qty * price;
 
-<h3>التوصية</h3>
-<textarea rows="5"></textarea>
+        lineTotalCell.textContent = total.toFixed(2);
+        grandTotal += total;
+      });
 
-<h3>الملاحظات</h3>
-<textarea rows="5"></textarea>
+      document.getElementById("grandTotal").textContent = grandTotal.toFixed(2);
+    }
 
+    function addRow() {
+      const tbody = document.getElementById("tableBody");
+      const row = document.createElement("tr");
 
-<div class="print-btn-container">
-  <button onclick="prepareAndPrint()">طباعة النموذج</button>
-</div>
+      row.innerHTML = `
+        <td><input type="text" class="item-name" placeholder="اكتب الصنف أو الخدمة" /></td>
+        <td><input type="number" class="qty" min="0" step="1" value="1" /></td>
+        <td><input type="number" class="price" min="0" step="0.01" value="0" /></td>
+        <td class="line-total">0.00</td>
+        <td><button type="button" class="btn-danger" onclick="removeRow(this)">حذف</button></td>
+      `;
 
-</div>
+      tbody.appendChild(row);
+      attachEvents(row);
+      calculateTotals();
+    }
 
-<script src="script.js"></script>
+    function removeRow(button) {
+      const rows = document.querySelectorAll("#tableBody tr");
+      if (rows.length > 1) {
+        button.closest("tr").remove();
+        calculateTotals();
+      } else {
+        alert("لا يمكن حذف آخر سطر.");
+      }
+    }
+
+    function attachEvents(scope = document) {
+      const qtyInputs = scope.querySelectorAll(".qty");
+      const priceInputs = scope.querySelectorAll(".price");
+
+      qtyInputs.forEach(input => {
+        input.removeEventListener("input", calculateTotals);
+        input.addEventListener("input", calculateTotals);
+      });
+
+      priceInputs.forEach(input => {
+        input.removeEventListener("input", calculateTotals);
+        input.addEventListener("input", calculateTotals);
+      });
+    }
+
+    document.getElementById("releaseDate").valueAsDate = new Date();
+
+    attachEvents();
+    calculateTotals();
+  </script>
 </body>
 </html>
